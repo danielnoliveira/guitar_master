@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: const Color.fromRGBO(140, 2, 0, 1.0),
           scaffoldBackgroundColor: const Color.fromARGB(255, 80, 80, 80),
-          primarySwatch: Colors.red,
         ),
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),
