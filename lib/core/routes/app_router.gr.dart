@@ -19,6 +19,7 @@ import '../../screens/game_screen/game_screen.dart' as _i5;
 import '../../screens/home_screen/home_screen.dart' as _i2;
 import '../../screens/songs_screen/songs_screen.dart' as _i4;
 import '../../screens/splash_screen/splash_screen.dart' as _i1;
+import '../model/chart.dart' as _i8;
 
 class AppRouter extends _i6.RootStackRouter {
   AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
@@ -43,8 +44,10 @@ class AppRouter extends _i6.RootStackRouter {
           routeData: routeData, child: const _i4.SongsScreen());
     },
     GameScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<GameScreenRouteArgs>();
       return _i6.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.GameScreen());
+          routeData: routeData,
+          child: _i5.GameScreen(key: args.key, chart: args.chart));
     }
   };
 
@@ -54,7 +57,7 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(HomeScreenRoute.name, path: '/home'),
         _i6.RouteConfig(DeveloperScreenRoute.name, path: '/home/credits'),
         _i6.RouteConfig(SongsScreenRoute.name, path: '/home/songs'),
-        _i6.RouteConfig(GameScreenRoute.name, path: 'home/game')
+        _i6.RouteConfig(GameScreenRoute.name, path: '/home/game')
       ];
 }
 
@@ -93,8 +96,24 @@ class SongsScreenRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.GameScreen]
-class GameScreenRoute extends _i6.PageRouteInfo<void> {
-  const GameScreenRoute() : super(GameScreenRoute.name, path: 'home/game');
+class GameScreenRoute extends _i6.PageRouteInfo<GameScreenRouteArgs> {
+  GameScreenRoute({_i7.Key? key, required _i8.Chart chart})
+      : super(GameScreenRoute.name,
+            path: '/home/game',
+            args: GameScreenRouteArgs(key: key, chart: chart));
 
   static const String name = 'GameScreenRoute';
+}
+
+class GameScreenRouteArgs {
+  const GameScreenRouteArgs({this.key, required this.chart});
+
+  final _i7.Key? key;
+
+  final _i8.Chart chart;
+
+  @override
+  String toString() {
+    return 'GameScreenRouteArgs{key: $key, song: $chart}';
+  }
 }

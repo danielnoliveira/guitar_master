@@ -14,7 +14,7 @@ import 'app_router.gr.dart';
     AutoRoute(page: HomeScreen, initial: true, path: '/home'),
     AutoRoute(page: DeveloperScreen, initial: true, path: '/home/credits'),
     AutoRoute(page: SongsScreen, initial: true, path: '/home/songs'),
-    AutoRoute(page: GameScreen, initial: true, path: 'home/game'),
+    AutoRoute(page: GameScreen, initial: true, path: '/home/game'),
   ],
 )
 class $AppRouter extends AppRouter {}
